@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
     tools:context="shmoop.mticket.MainActivity">
 
@@ -13,8 +12,11 @@
         android:id="@+id/action_bar"
         />
 
-    <FrameLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/action_bar_stroke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar">
         <View android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/colorAccent"/>
@@ -22,49 +24,53 @@
 
     <Button
         android:id="@+id/button_buy_tickets"
+        android:layout_below="@+id/action_bar_stroke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
-        android:drawableLeft="@drawable/logo"
+        android:drawableLeft="@drawable/ic_ticket"
+        android:drawablePadding="15sp"
         android:gravity="left|center_vertical"
         android:text="Buy Tickets"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="18dp"
-        android:layout_margin="8dp"/>
+        android:textSize="20sp"
+        android:layout_margin="8sp"/>
 
     <Button
         android:id="@+id/button_ticket_wallet"
+        android:layout_below="@+id/button_buy_tickets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
-        android:drawableLeft="@drawable/logo"
+        android:drawableLeft="@drawable/ic_ticketwallet"
+        android:drawablePadding="15sp"
         android:gravity="left|center_vertical"
         android:text="Ticket Wallet"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="18dp"
-        android:layout_margin="8dp" />
+        android:textSize="20sp"
+        android:layout_margin="8sp" />
 
     <Button
         android:id="@+id/button_my_account"
+        android:layout_below="@+id/button_ticket_wallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
-        android:drawableLeft="@drawable/logo"
+        android:drawableLeft="@drawable/ic_myaccount"
+        android:drawablePadding="15sp"
         android:gravity="left|center_vertical"
         android:text="My Account"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="18dp"
-        android:layout_margin="8dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:textSize="20sp"
+        android:layout_margin="8sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:srcCompat="@drawable/skyline" />
+        app:srcCompat="@drawable/skyline"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        />
 
-</LinearLayout>
+</RelativeLayout>

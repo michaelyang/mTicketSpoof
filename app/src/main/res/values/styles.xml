@@ -11,6 +11,7 @@
     <style name="ToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:background">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorButton</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">

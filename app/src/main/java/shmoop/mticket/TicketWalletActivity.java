@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +29,20 @@ public class TicketWalletActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        TabHost host = (TabHost)findViewById(android.R.id.tabhost);
+        host.setup();
+
+        TabSpec spec = host.newTabSpec("Tickets");
+        spec.setContent(R.id.ticket_tab);
+        spec.setIndicator("Tickets");
+        host.addTab(spec);
+
+        spec = host.newTabSpec("History");
+        spec.setContent(R.id.history_tab);
+        spec.setIndicator("History");
+        host.addTab(spec);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
