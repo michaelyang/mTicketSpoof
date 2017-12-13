@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".TicketWalletActivity">
     <item
-        android:id="@+id/action_menu_main"
+        android:id="@+id/action_menu_refresh"
         android:orderInCategory="300"
-        android:title="Menu"
-        android:icon="@drawable/menu"
+        android:title="Refresh"
+        android:icon="@drawable/ic_refresh"
         app:showAsAction="ifRoom"
         ></item>
 </menu>
