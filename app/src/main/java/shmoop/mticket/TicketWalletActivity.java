@@ -1,5 +1,9 @@
 package shmoop.mticket;
 
+import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 
 public class TicketWalletActivity extends BaseActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,11 @@ public class TicketWalletActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        TabHost host = (TabHost)findViewById(android.R.id.tabhost);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabss);
+        tabLayout.addTab(tabLayout.newTab().setText("Tickets"));
+        tabLayout.addTab(tabLayout.newTab().setText("History"));
+
+        TabHost host = (TabHost) findViewById(android.R.id.tabhost);
         host.setup();
 
         TabSpec spec = host.newTabSpec("Tickets");
@@ -41,6 +50,13 @@ public class TicketWalletActivity extends BaseActivity {
         spec.setContent(R.id.history_tab);
         spec.setIndicator("History");
         host.addTab(spec);
+
+        for(int i=0;i< host.getTabWidget().getChildCount();i++)
+        {
+            TextView tv = (TextView) host.getTabWidget().getChildAt(i).findViewById(android.R.id.tabs);
+            //tv.setTextAppearance(android.R.style.TextAppearance_Material_Body2);
+            tv.setTextColor(Color.parseColor("#FFFFFF"));
+        }
     }
 
     @Override
