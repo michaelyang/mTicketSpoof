@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/addTicket1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Add Ticket 1" />
+
+    <Button
+        android:id="@+id/addTicket2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTicket1"
+        android:layout_centerHorizontal="true"
+        android:text="Add Ticket 2" />
+
+    <Button
+        android:id="@+id/clearTickets"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTicket2"
+        android:layout_centerHorizontal="true"
+        android:text="Clear Tickets" />
+</RelativeLayout>

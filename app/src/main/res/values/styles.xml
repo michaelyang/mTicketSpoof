@@ -18,17 +18,9 @@
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
-    <style name="CustomTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
-        <item name="tabSelectedTextColor">@color/colorButton</item>
-        <item name="tabIndicatorColor">@color/colorToolbarText</item>
-        <item name="tabTextAppearance">@style/CustomTabTextStyle</item>
-    </style>
-
-    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="textAllCaps">false</item>
-        ...
+    <style name="TabWidgetTheme" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/colorToolbarText</item>
+        <item name="android:textColorSecondary">@color/black</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

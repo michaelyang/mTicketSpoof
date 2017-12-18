@@ -5,17 +5,8 @@
                <solid android:color="@android:color/transparent" />
                 <corners android:radius="5dp" />
                     <stroke
-                        android:width="3sp"
+                        android:width="2sp"
                         android:color="@color/colorButton" />
-        </shape>
-    </item>
-    <item android:state_selected="true">
-        <shape>
-            <solid android:color="@android:color/white" />
-            <corners android:radius="5dp" />
-            <stroke
-                android:width="3sp"
-                android:color="@color/colorButton" />
         </shape>
     </item>
 </selector>

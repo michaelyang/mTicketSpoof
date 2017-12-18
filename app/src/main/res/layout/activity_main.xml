@@ -24,17 +24,17 @@
 
     <Button
         android:id="@+id/button_buy_tickets"
-        android:layout_below="@+id/action_bar_stroke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar_stroke"
+        android:layout_margin="8sp"
         android:background="@drawable/button_style"
         android:drawableLeft="@drawable/ic_ticket"
         android:drawablePadding="15sp"
         android:gravity="left|center_vertical"
         android:text="Buy Tickets"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        android:layout_margin="8sp"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_ticket_wallet"

@@ -1,20 +1,35 @@
 package shmoop.mticket;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketWalletActivity extends BaseActivity {
 
@@ -34,29 +49,46 @@ public class TicketWalletActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabss);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Tickets"));
         tabLayout.addTab(tabLayout.newTab().setText("History"));
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final PagerAdapter adapter = new PagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        View firstTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+        View secondTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+        firstTab.setBackground(getDrawable(R.drawable.tickets_tab_selected));
+        secondTab.setBackground(getDrawable(R.drawable.history_tab_unselected));
 
-        TabHost host = (TabHost) findViewById(android.R.id.tabhost);
-        host.setup();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
 
-        TabSpec spec = host.newTabSpec("Tickets");
-        spec.setContent(R.id.ticket_tab);
-        spec.setIndicator("Tickets");
-        host.addTab(spec);
+                int selectedTabPosition = tab.getPosition();
+                View firstTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+                View secondTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+                if (selectedTabPosition == 0)
+                { // that means first tab
+                    firstTab.setBackground(getDrawable(R.drawable.tickets_tab_selected));
+                    secondTab.setBackground(getDrawable(R.drawable.history_tab_unselected));
+                } else if (selectedTabPosition == 1)
+                { // that means it's a last tab
+                    firstTab.setBackground(getDrawable(R.drawable.tickets_tab_unselected));
+                    secondTab.setBackground(getDrawable(R.drawable.history_tab_selected));
+                }
+            }
 
-        spec = host.newTabSpec("History");
-        spec.setContent(R.id.history_tab);
-        spec.setIndicator("History");
-        host.addTab(spec);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
 
-        for(int i=0;i< host.getTabWidget().getChildCount();i++)
-        {
-            TextView tv = (TextView) host.getTabWidget().getChildAt(i).findViewById(android.R.id.tabs);
-            //tv.setTextAppearance(android.R.style.TextAppearance_Material_Body2);
-            tv.setTextColor(Color.parseColor("#FFFFFF"));
-        }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
 
     @Override
@@ -86,5 +118,4 @@ public class TicketWalletActivity extends BaseActivity {
         super.onBackPressed();
         return true;
     }
-
 }
