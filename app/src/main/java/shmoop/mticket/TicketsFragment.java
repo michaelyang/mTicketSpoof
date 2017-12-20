@@ -1,6 +1,7 @@
 package shmoop.mticket;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,8 +37,12 @@ public class TicketsFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    Toast.makeText(getActivity(), "position is: " + position, Toast.LENGTH_SHORT).show();
-                    sharedPreference.activateTicket(getContext(), position);
+                    //Toast.makeText(getActivity(), "position is: " + position, Toast.LENGTH_SHORT).show();
+                    //sharedPreference.activateTicket(getContext(), position);
+                    Intent startIntent = new Intent(getActivity(), TicketActivity.class);
+                    startIntent.putExtra("Ticket", (Ticket) ticketsList.get(position));
+                    startIntent.putExtra("position", position);
+                    startActivity(startIntent);
                 }
             });
 
@@ -48,6 +53,14 @@ public class TicketsFragment extends Fragment {
             return view;
         }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (mAdapter != null){
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
         @Override
         public void setUserVisibleHint(boolean isVisibleToUser) {
             super.setUserVisibleHint(isVisibleToUser);
@@ -55,5 +68,4 @@ public class TicketsFragment extends Fragment {
                 getFragmentManager().beginTransaction().detach(this).attach(this).commit();
             }
         }
-
 }

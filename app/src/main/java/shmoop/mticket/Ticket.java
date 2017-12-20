@@ -1,8 +1,6 @@
 package shmoop.mticket;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.google.gson.Gson;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,7 +8,7 @@ import java.util.Date;
  * Created by Michael on 12/16/2017.
  */
 
-public class Ticket {
+public class Ticket implements Serializable {
     public String ticketNumber;
     public String fareType;
     public double price;
@@ -49,6 +47,10 @@ public class Ticket {
     public String getTicketNumber() {
         return ticketNumber;
     }
+    public String getFareType() { return fareType; }
     public Boolean getActive() { return active; }
-    public void activate() { active = true;}
+    public void activate() {
+        activated = Calendar.getInstance().getTime();
+        active = true;
+    }
 }

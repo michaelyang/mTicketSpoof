@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="ColorBarView">
+        <attr name="color1" format="color" />
+        <attr name="color2" format="color" />
+        <attr name="color3" format="color" />
+        <attr name="date" format="string" />
+        <attr name="time" format="string" />
+        <attr name="height" format="dimension" />
+    </declare-styleable>
+</resources>

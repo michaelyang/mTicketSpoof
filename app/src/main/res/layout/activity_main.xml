@@ -12,15 +12,12 @@
         android:id="@+id/action_bar"
         />
 
-    <FrameLayout
+    <View
         android:id="@+id/action_bar_stroke"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/action_bar">
-        <View android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/colorAccent"/>
-    </FrameLayout>
+        android:layout_height="3dp"
+        android:layout_below="@+id/action_bar"
+        android:background="@color/colorAccent"/>
 
     <Button
         android:id="@+id/button_buy_tickets"

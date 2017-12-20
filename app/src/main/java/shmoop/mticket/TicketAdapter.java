@@ -47,6 +47,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
             active.setTextColor(Color.WHITE);
             fareType.setTextColor(Color.WHITE);
             layout.setBackgroundResource(R.drawable.ticket_item_active);
+
         } else {
             active.setText("INACTIVE");
             layout.setBackgroundResource(R.drawable.ticket_item_inactive);

@@ -5,22 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="shmoop.mticket.MainActivity">
+    tools:context="shmoop.mticket.TicketWalletActivity">
 
     <include
         layout = "@layout/action_bar"
         android:id="@+id/action_bar"
         />
 
-    <FrameLayout
+    <View
         android:id="@+id/action_bar_stroke"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/action_bar">
-        <View android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/colorAccent"/>
-    </FrameLayout>
+        android:layout_height="3dp"
+        android:layout_below="@+id/action_bar"
+        android:background="@color/colorAccent"/>
 
 <LinearLayout
     android:layout_width="match_parent"

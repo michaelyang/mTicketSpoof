@@ -62,10 +62,10 @@ public class SharedPreference {
 
     public void activateTicket(Context context, int position) {
         ArrayList ticketsList = loadTickets(context);
-        if (ticketsList == null)
-            return;
-        ((Ticket) ticketsList.get(position)).activate();
-        storeTickets(context, ticketsList);
+        if (ticketsList != null) {
+            ((Ticket) ticketsList.get(position)).activate();
+            storeTickets(context, ticketsList);
+        }
     }
 
     public void clearTickets(Context context) {
