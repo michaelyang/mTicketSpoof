@@ -1,21 +1,15 @@
 package shmoop.mticket;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Toast;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -42,7 +36,7 @@ public class TicketsFragment extends Fragment {
                     Intent startIntent = new Intent(getActivity(), TicketActivity.class);
                     startIntent.putExtra("Ticket", (Ticket) ticketsList.get(position));
                     startIntent.putExtra("position", position);
-                    startActivity(startIntent);
+                    startActivityForResult(startIntent, 1);
                 }
             });
 
@@ -53,14 +47,6 @@ public class TicketsFragment extends Fragment {
             return view;
         }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (mAdapter != null){
-            mAdapter.notifyDataSetChanged();
-        }
-    }
-
         @Override
         public void setUserVisibleHint(boolean isVisibleToUser) {
             super.setUserVisibleHint(isVisibleToUser);
@@ -68,4 +54,13 @@ public class TicketsFragment extends Fragment {
                 getFragmentManager().beginTransaction().detach(this).attach(this).commit();
             }
         }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getActivity();
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
+    }
 }

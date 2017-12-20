@@ -60,15 +60,20 @@ public class ColorBarView extends View {
         // allocations per draw cycle.
         int contentWidth = getWidth();
         int contentHeight = height;
+        int paddingTop = getPaddingTop();
+        int paddingBottom = getPaddingBottom();
+        int paddingLeft = getPaddingLeft();
+        int paddingRight = getPaddingRight();
+
         paint.setStyle(Style.FILL);
         paint.setAntiAlias(true);
         paint.setColor(color1);
         // Draw the text.
-        canvas.drawRect(0,0,contentWidth/3,contentHeight,paint);
+        canvas.drawRect(paddingLeft,paddingTop,paddingLeft+contentWidth/3,paddingTop+contentHeight,paint);
         paint.setColor(color2);
-        canvas.drawRect(contentWidth/3,0,2*contentWidth/3,contentHeight, paint);
+        canvas.drawRect(paddingLeft+contentWidth/3,paddingTop,paddingLeft+2*contentWidth/3,paddingTop+contentHeight, paint);
         paint.setColor(color3);
-        canvas.drawRect(2*contentWidth/3,0,contentWidth,contentHeight,paint);
+        canvas.drawRect(paddingLeft+2*contentWidth/3,paddingTop,paddingLeft+contentWidth,paddingTop+contentHeight,paint);
     }
 
     public int getColor1(){
@@ -113,10 +118,12 @@ public class ColorBarView extends View {
     }
 
     private int measureHeight(int measureSpec) {
-        return height;
+        int paddingTop = getPaddingTop();
+        int paddingBottom = getPaddingBottom();
+        return paddingTop + height + paddingBottom;
     }
     private int measureWidth(int measureSpec) {
-        return 600;
+        return 800;
     }
 
     @Override

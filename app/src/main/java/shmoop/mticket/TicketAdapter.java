@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,13 +42,14 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
         TextView fareType = (TextView) listItem.findViewById(R.id.fareType);
         fareType.setText(currentTicket.fareType);
         TextView active = (TextView) listItem.findViewById(R.id.active);
+        View stroke = (View) listItem.findViewById(R.id.stroke);
 
         if (currentTicket.getActive()) {
             active.setText("ACTIVE");
             active.setTextColor(Color.WHITE);
             fareType.setTextColor(Color.WHITE);
             layout.setBackgroundResource(R.drawable.ticket_item_active);
-
+            stroke.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.active));
         } else {
             active.setText("INACTIVE");
             layout.setBackgroundResource(R.drawable.ticket_item_inactive);

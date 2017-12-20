@@ -1,5 +1,6 @@
 package shmoop.mticket;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,6 +44,9 @@ public class TicketActivity extends AppCompatActivity {
         actionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sharedPreference.activateTicket(TicketActivity.this, position);
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result", "1");
+                setResult(RESULT_OK,returnIntent);
             }
         });
 
