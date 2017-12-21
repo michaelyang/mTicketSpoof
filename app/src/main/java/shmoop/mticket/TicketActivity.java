@@ -75,11 +75,13 @@ public class TicketActivity extends AppCompatActivity {
         TextView activated = (TextView) findViewById(R.id.activated);
         if (ticket.getActive()) {
             SimpleDateFormat df = new SimpleDateFormat("h:mm a");
-            activated.setText("Ticket activated at " + df.format(ticket.getActivated()));
+            activated.setText("Ticket activated at " + df.format(ticket.getActivatedAt()));
         } else {
             activated.setVisibility(View.INVISIBLE);
         }
 
+        TextView fareType = (TextView) findViewById(R.id.fareType);
+        fareType.setText(ticket.getFareType());
 
         Button actionsButton = (Button) findViewById(R.id.actionsButton);
         actionsButton.setOnClickListener(new View.OnClickListener() {

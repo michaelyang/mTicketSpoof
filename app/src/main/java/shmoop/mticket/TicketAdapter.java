@@ -42,7 +42,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
         TextView fareType = (TextView) listItem.findViewById(R.id.fareType);
         fareType.setText(currentTicket.fareType);
         TextView active = (TextView) listItem.findViewById(R.id.active);
-        View stroke = (View) listItem.findViewById(R.id.stroke);
+        View stroke = listItem.findViewById(R.id.stroke);
 
         if (currentTicket.getActive()) {
             active.setText("ACTIVE");
@@ -52,15 +52,29 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
             stroke.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.active));
         } else {
             active.setText("INACTIVE");
+            active.setTextColor(Color.LTGRAY);
+            fareType.setTextColor(Color.BLACK);
             layout.setBackgroundResource(R.drawable.ticket_item_inactive);
+            stroke.setBackgroundColor(Color.LTGRAY);
         }
 
         TextView origin = (TextView) listItem.findViewById(R.id.origin);
-        origin.setText(currentTicket.origin);
+        origin.setText(addZone(currentTicket.origin));
 
         TextView destination = (TextView) listItem.findViewById(R.id.destination);
-        destination.setText(currentTicket.destination);
+        destination.setText(addZone(currentTicket.destination));
 
         return listItem;
+    }
+
+    private String addZone(String station) {
+        if (station.equals("Back Bay")) {
+            return station + " 1A";
+        }
+        if (station.equals("Providence")) {
+            return station + " 8";
+        } else {
+            return station;
+        }
     }
 }

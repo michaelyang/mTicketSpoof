@@ -31,8 +31,6 @@ public class TicketsFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    //Toast.makeText(getActivity(), "position is: " + position, Toast.LENGTH_SHORT).show();
-                    //sharedPreference.activateTicket(getContext(), position);
                     Intent startIntent = new Intent(getActivity(), TicketActivity.class);
                     startIntent.putExtra("Ticket", (Ticket) ticketsList.get(position));
                     startIntent.putExtra("position", position);
@@ -55,12 +53,12 @@ public class TicketsFragment extends Fragment {
             }
         }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        getActivity();
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            getActivity();
+            if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
+                getFragmentManager().beginTransaction().detach(this).attach(this).commit();
         }
     }
 }

@@ -51,6 +51,7 @@
             android:textColor="@android:color/white"
             android:textSize="40dp"
             android:lineSpacingMultiplier="0.8"
+            android:textAlignment="center"
             android:textStyle="bold" />
 
         <TextView
@@ -124,18 +125,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="Actions"
+                android:layout_margin="10dp"
                 android:textColor="@android:color/white"
+                android:background="@drawable/button_style_purple"
                 android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/ticketInfoButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:text="Ticket Info"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        />
-    </LinearLayout>
+            <Button
+                android:id="@+id/ticketInfoButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_margin="10dp"
+                android:text="Ticket Info"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_style_purple"
+                />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
