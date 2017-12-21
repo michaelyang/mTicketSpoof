@@ -8,4 +8,5 @@
     <color name="black">#000</color>
     <color name="trans">#80000000 </color>
     <color name="active">#3aaa35</color>
+    <color name="activatedTab">#ed203d</color>
 </resources>

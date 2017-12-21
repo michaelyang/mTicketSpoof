@@ -123,7 +123,7 @@ public class ColorBarView extends View {
         return paddingTop + height + paddingBottom;
     }
     private int measureWidth(int measureSpec) {
-        return 800;
+        return 950;
     }
 
     @Override

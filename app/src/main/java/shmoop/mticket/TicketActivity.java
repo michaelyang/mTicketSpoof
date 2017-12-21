@@ -12,8 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Handler;
+
 public class TicketActivity extends AppCompatActivity {
     private SharedPreference sharedPreference;
+    TextView datetime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,38 @@ public class TicketActivity extends AppCompatActivity {
         Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
         colorBarView.startAnimation(animBlink);
 
+        datetime = (TextView) findViewById(R.id.datetime);
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateTextView();
+                            }
+                        });
+                        Thread.sleep(1000);
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        t.start();
+        Animation animSidetoSide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.sidetoside);
+        datetime.startAnimation(animSidetoSide);
+
+
+        TextView activated = (TextView) findViewById(R.id.activated);
+        if (ticket.getActive()) {
+            SimpleDateFormat df = new SimpleDateFormat("h:mm a");
+            activated.setText("Ticket activated at " + df.format(ticket.getActivated()));
+        } else {
+            activated.setVisibility(View.INVISIBLE);
+        }
+
+
         Button actionsButton = (Button) findViewById(R.id.actionsButton);
         actionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -56,5 +97,12 @@ public class TicketActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         super.onBackPressed();
         return true;
+    }
+
+    private void updateTextView() {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("h:mm:ss a\nMM/dd/yy");
+        String formattedDate = df.format(c.getTime());
+        datetime.setText(formattedDate);
     }
 }

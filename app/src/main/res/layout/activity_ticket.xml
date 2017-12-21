@@ -22,38 +22,110 @@
         android:background="@color/colorAccent"/>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/colorBar"
+        android:id="@+id/colorBarFrame"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/action_bar_stroke">
+        android:layout_below="@+id/action_bar_stroke"
+        android:background="@drawable/ticket_tab_style">
     <shmoop.mticket.ColorBarView
+        android:id="@+id/colorBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:layout_centerHorizontal="true"
-        custom:color1="@color/black"
-        custom:color2="@color/colorAccent"
-        custom:color3="@color/colorPrimaryDark"
-        custom:height="75dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_gravity="center"
+        custom:color1="@android:color/holo_blue_light"
+        custom:color2="@android:color/holo_orange_light"
+        custom:color3="@android:color/holo_green_light"
+        custom:height="120dp"/>
+
+        <TextView
+            android:id="@+id/datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="10"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:lineSpacingMultiplier="0.8"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:text="Tap to reveal barcode"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textStyle="bold"/>
     </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/colorBarButton"
+        android:layout_below="@+id/colorBarFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/semicircle_button"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_expandmore"
+    />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/colorBar"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/colorBarButton">
 
-    <Button
-        android:id="@+id/actionsButton"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/activated"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:text="Actions"
+        android:background="@drawable/ticket_tab_style_red"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         />
+
+        <TextView
+            android:id="@+id/fareType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:background="@drawable/ticket_tab_style"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+
+        <TextView
+            android:id="@+id/zone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:background="@drawable/ticket_tab_style"
+            android:textAlignment="center"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/ticket_tab_style">
+
+            <Button
+                android:id="@+id/actionsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Actions"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
     <Button
         android:id="@+id/ticketInfoButton"
@@ -61,6 +133,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:text="Ticket Info"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         />
+    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
