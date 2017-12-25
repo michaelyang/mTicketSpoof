@@ -65,9 +65,9 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:layout_gravity="center"
-        custom:color1="#d53958"
-        custom:color2="@color/colorAccent"
-        custom:color3="@color/colorPrimary"
+        custom:color1="@color/defaultColor1"
+        custom:color2="@color/defaultColor2"
+        custom:color3="@color/defaultColor3"
         custom:height="120dp"/>
 
         <TextView

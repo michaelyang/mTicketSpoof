@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shmoop.mticket.ColorActivity"
+    android:orientation="vertical">
+    <shmoop.mticket.ColorBarView
+        android:id="@+id/colorBar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_gravity="center"
+        custom:color1="@color/defaultColor1"
+        custom:color2="@color/defaultColor2"
+        custom:color3="@color/defaultColor3"
+        custom:height="120dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/colorButton1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:text="Color 1"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_style_purple"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/colorButton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:layout_margin="10dp"
+            android:text="Color 2"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_style_purple"
+            />
+        <Button
+            android:id="@+id/colorButton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:layout_margin="10dp"
+            android:text="Color 3"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_style_purple"
+            />
+    </LinearLayout>
+</LinearLayout>

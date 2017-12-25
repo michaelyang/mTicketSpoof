@@ -1,5 +1,6 @@
 package shmoop.mticket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         addTicket2Button.setOnClickListener(this);
         Button clearTickets = (Button) view.findViewById(R.id.clearTickets);
         clearTickets.setOnClickListener(this);
+        Button changeColor = (Button) view.findViewById(R.id.changeColor);
+        changeColor.setOnClickListener(this);
         return view;
     }
 
@@ -40,6 +43,10 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.clearTickets:
                 sharedPreference.clearTickets(getContext());
+                break;
+            case R.id.changeColor:
+                Intent startIntent = new Intent(getActivity(), ColorActivity.class);
+                startActivity(startIntent);
                 break;
         }
     }

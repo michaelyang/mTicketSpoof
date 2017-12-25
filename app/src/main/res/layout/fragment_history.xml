@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_margin="8sp"
+        android:background="@drawable/button_style"
         android:text="Add Ticket 1" />
 
     <Button
@@ -18,6 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addTicket1"
         android:layout_centerHorizontal="true"
+        android:layout_margin="8sp"
+        android:background="@drawable/button_style"
         android:text="Add Ticket 2" />
 
     <Button
@@ -26,5 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addTicket2"
         android:layout_centerHorizontal="true"
+        android:layout_margin="8sp"
+        android:background="@drawable/button_style"
         android:text="Clear Tickets" />
+
+    <Button
+        android:id="@+id/changeColor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clearTickets"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8sp"
+        android:background="@drawable/button_style"
+        android:text="Change Color" />
 </RelativeLayout>

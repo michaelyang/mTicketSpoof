@@ -9,4 +9,7 @@
     <color name="trans">#80000000 </color>
     <color name="active">#3aaa35</color>
     <color name="activatedTab">#ed203d</color>
+    <color name="defaultColor1">@android:color/holo_blue_light</color>
+    <color name="defaultColor2">@android:color/holo_orange_light</color>
+    <color name="defaultColor3">@android:color/holo_green_light</color>
 </resources>

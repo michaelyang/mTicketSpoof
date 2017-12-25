@@ -21,7 +21,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".TicketWalletActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".TicketActivity"></activity>
+        <activity android:name=".TicketActivity" />
+        <activity android:name=".ColorActivity"></activity>
     </application>
 
 </manifest>

@@ -12,8 +12,6 @@ import android.view.View;
  * TODO: document your custom view class.
  */
 public class ColorBarView extends View {
-    private String date;
-    private String time;// TODO: use a default from R.string...
     private int color1;
     private int color2;
     private int color3;// TODO: use a default from R.color...
@@ -42,8 +40,6 @@ public class ColorBarView extends View {
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorBarView, 0, 0);
         try {
             height = a.getDimensionPixelSize(R.styleable.ColorBarView_height, 0);
-            date = a.getString(R.styleable.ColorBarView_date);
-            time = a.getString(R.styleable.ColorBarView_time);
             color1 = a.getColor(R.styleable.ColorBarView_color1, 0);
             color2 = a.getColor(R.styleable.ColorBarView_color2, 0);
             color3 = a.getColor(R.styleable.ColorBarView_color3, 0);
@@ -85,12 +81,6 @@ public class ColorBarView extends View {
     public int getColor3(){
         return color3;
     }
-    public String getDate(){
-        return date;
-    }
-    public String getTime(){
-        return time;
-    }
     public void setColor1(int color){
         color1 = color;
         invalidate();
@@ -103,16 +93,6 @@ public class ColorBarView extends View {
     }
     public void setColor3(int color){
         color3 = color;
-        invalidate();
-        requestLayout();
-    }
-    public void setDate(String date){
-        this.date = date;
-        invalidate();
-        requestLayout();
-    }
-    public void setTime(String time){
-        this.time = time;
         invalidate();
         requestLayout();
     }
