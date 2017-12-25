@@ -53,7 +53,8 @@ public class Ticket implements Serializable {
     }
     public String getFareType() { return fareType; }
     public Boolean getActive() { return active; }
-    public Date getActivatedAt() {return activatedAt;}
+    public Date getActivatedAt() { return activatedAt; }
+    public Date getValidUntil() { return validUntil; }
     public void activate() {
         Calendar c = Calendar.getInstance();
         activatedAt = c.getTime();

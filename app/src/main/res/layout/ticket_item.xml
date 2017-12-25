@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/active"
-            android:layout_marginTop="30sp"
-            android:layout_marginBottom="5sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
             android:background="@android:color/darker_gray"/>
 
     <TextView
@@ -40,6 +40,7 @@
         android:layout_below="@+id/stroke"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="15sp"
+        android:paddingBottom="5dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -53,4 +54,17 @@
         android:textStyle="bold"
         android:layout_marginBottom="50sp"/>
 
+    <TextView
+        android:id="@+id/valid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textAllCaps="true"
+        android:textSize="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        />
 </RelativeLayout>

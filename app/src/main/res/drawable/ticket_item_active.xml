@@ -7,7 +7,7 @@
                         <corners android:radius="15sp"/>
                     </shape>
                 </item>
-    <item android:bottom="120dp">
+    <item android:bottom="140dp">
         <shape>
             <solid android:color="#3aaa35" />
             <corners android:topLeftRadius="15dp" android:topRightRadius="15dp"

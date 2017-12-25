@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -21,12 +21,43 @@
         android:layout_height="3dp"
         android:background="@color/colorAccent"/>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/colorBarFrame"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/colorBarFrameInactive"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/action_bar_stroke"
-        android:background="@drawable/ticket_tab_style">
+        android:orientation="vertical"
+        android:background="@drawable/ticket_tab_style"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="60dp"
+        android:paddingBottom="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Ticket is not yet active."
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Please activate your ticket just before boarding."
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textAlignment="center"/>
+        </LinearLayout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/colorBarFrameActive"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ticket_tab_style"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
     <shmoop.mticket.ColorBarView
         android:id="@+id/colorBar"
         android:layout_width="match_parent"
@@ -34,9 +65,9 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:layout_gravity="center"
-        custom:color1="@android:color/holo_blue_light"
-        custom:color2="@android:color/holo_orange_light"
-        custom:color3="@android:color/holo_green_light"
+        custom:color1="#d53958"
+        custom:color2="@color/colorAccent"
+        custom:color3="@color/colorPrimary"
         custom:height="120dp"/>
 
         <TextView
@@ -66,11 +97,10 @@
 
     <ImageButton
         android:id="@+id/colorBarButton"
-        android:layout_below="@+id/colorBarFrame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/semicircle_button"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:src="@drawable/ic_expandmore"
     />
 
@@ -80,8 +110,22 @@
         android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_below="@+id/colorBarButton">
+        android:paddingRight="20dp">
+
+        <Button
+            android:id="@+id/activate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_green"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:text="Activate Ticket"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
 
     <TextView
         android:id="@+id/activated"
@@ -97,28 +141,34 @@
             android:id="@+id/fareType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test"
             android:background="@drawable/ticket_tab_style"
             android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             />
-
-        <TextView
-            android:id="@+id/zone"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:background="@drawable/ticket_tab_style"
-            android:textAlignment="center"
-            />
+            >
+                <ImageView
+                    android:id="@+id/zone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zone"
+                    android:adjustViewBounds="true"
+                    />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/ticket_tab_style">
-
             <Button
                 android:id="@+id/actionsButton"
                 android:layout_width="0dp"
@@ -126,7 +176,9 @@
                 android:layout_weight="0.5"
                 android:text="Actions"
                 android:layout_margin="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="@android:color/white"
+                android:textSize="15dp"
                 android:background="@drawable/button_style_purple"
                 android:textStyle="bold" />
 
@@ -138,9 +190,11 @@
                 android:layout_margin="10dp"
                 android:text="Ticket Info"
                 android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="@android:color/white"
+                android:textSize="15dp"
                 android:background="@drawable/button_style_purple"
                 />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

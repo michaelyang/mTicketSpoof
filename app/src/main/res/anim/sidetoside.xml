@@ -5,5 +5,5 @@
     android:interpolator="@android:anim/linear_interpolator"
     android:repeatMode="reverse"
     android:repeatCount="infinite"
-    android:toXDelta="70%"
+    android:toXDelta="55%"
 />

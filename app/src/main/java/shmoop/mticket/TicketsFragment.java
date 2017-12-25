@@ -32,13 +32,12 @@ public class TicketsFragment extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
                     Intent startIntent = new Intent(getActivity(), TicketActivity.class);
-                    startIntent.putExtra("Ticket", (Ticket) ticketsList.get(position));
                     startIntent.putExtra("position", position);
                     startActivityForResult(startIntent, 1);
                 }
             });
 
-            if (ticketsList != null) {
+            if (ticketsList != null && !ticketsList.isEmpty()) {
                 mAdapter = new TicketAdapter(getContext(), ticketsList);
                 listView.setAdapter(mAdapter);
             }

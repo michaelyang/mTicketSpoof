@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +67,12 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
         TextView destination = (TextView) listItem.findViewById(R.id.destination);
         destination.setText(addZone(currentTicket.destination));
 
+        TextView valid = (TextView) listItem.findViewById(R.id.valid);
+        SimpleDateFormat df = new SimpleDateFormat("MMM d, YYYY");
+        valid.setText("VALID UNTIL " + df.format(currentTicket.getValidUntil()));
+        if (currentTicket.getActive()) {
+            valid.setVisibility(View.INVISIBLE);
+        }
         return listItem;
     }
 

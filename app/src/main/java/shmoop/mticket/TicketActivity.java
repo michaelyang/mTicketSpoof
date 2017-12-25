@@ -2,6 +2,8 @@ package shmoop.mticket;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +11,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -28,11 +33,11 @@ public class TicketActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
-        Intent i = getIntent();
-        Ticket ticket = (Ticket) i.getSerializableExtra("Ticket");
-        final int position = (int) i.getSerializableExtra("position");
-
         sharedPreference = new SharedPreference();
+
+        Intent i = getIntent();
+        final int position = (int) i.getSerializableExtra("position");
+        Ticket ticket = sharedPreference.getTicketAt(this, position);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
         TextView toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -73,25 +78,95 @@ public class TicketActivity extends AppCompatActivity {
 
 
         TextView activated = (TextView) findViewById(R.id.activated);
-        if (ticket.getActive()) {
-            SimpleDateFormat df = new SimpleDateFormat("h:mm a");
-            activated.setText("Ticket activated at " + df.format(ticket.getActivatedAt()));
-        } else {
-            activated.setVisibility(View.INVISIBLE);
-        }
-
         TextView fareType = (TextView) findViewById(R.id.fareType);
         fareType.setText(ticket.getFareType());
+        ImageButton colorBarButton = (ImageButton) findViewById(R.id.colorBarButton);
+        colorBarButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                throw new RuntimeException("mTicket has stopped working.");
+            }
+        });
+        Button activateButton = (Button) findViewById(R.id.activate);
+        activateButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                final BottomSheetDialog dialog = new BottomSheetDialog(TicketActivity.this);
+                dialog.setContentView(R.layout.ticket_confirmation);
+                ImageView cancel = (ImageView) dialog.findViewById(R.id.cancel);
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                Button activate = (Button) dialog.findViewById(R.id.activate);
+                activate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sharedPreference.activateTicket(TicketActivity.this, position);
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("result", "1");
+                        setResult(RESULT_OK,returnIntent);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+                        finish();
+                        startActivity(getIntent());
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         Button actionsButton = (Button) findViewById(R.id.actionsButton);
         actionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                sharedPreference.activateTicket(TicketActivity.this, position);
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", "1");
-                setResult(RESULT_OK,returnIntent);
+                final BottomSheetDialog dialog = new BottomSheetDialog(TicketActivity.this);
+                dialog.setContentView(R.layout.ticket_confirmation);
+                ImageView cancel = (ImageView) dialog.findViewById(R.id.cancel);
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                Button activate = (Button) dialog.findViewById(R.id.activate);
+                activate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sharedPreference.activateTicket(TicketActivity.this, position);
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("result", "1");
+                        setResult(RESULT_OK,returnIntent);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+                        finish();
+                        startActivity(getIntent());
+                    }
+                });
+                dialog.show();
             }
         });
+
+        FrameLayout activeColorBar = (FrameLayout) findViewById(R.id.colorBarFrameActive);
+        LinearLayout inactiveColorBar = (LinearLayout) findViewById(R.id.colorBarFrameInactive);
+
+        if (ticket.getActive()) {
+            SimpleDateFormat df = new SimpleDateFormat("h:mm a");
+            activated.setText("Ticket activated at " + df.format(ticket.getActivatedAt()));
+            inactiveColorBar.setVisibility(View.GONE);
+            activateButton.setVisibility(View.GONE);
+        } else {
+            activated.setVisibility(View.GONE);
+            activeColorBar.setVisibility(View.GONE);
+            colorBarButton.setVisibility(View.GONE);
+        }
 
     }
 

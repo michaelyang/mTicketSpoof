@@ -68,6 +68,15 @@ public class SharedPreference {
         }
     }
 
+    public Ticket getTicketAt(Context context, int position) {
+        ArrayList ticketsList = loadTickets(context);
+        if (ticketsList != null) {
+            return ((Ticket) ticketsList.get(position));
+        } else {
+            return null;
+        }
+    }
+
     public void clearTickets(Context context) {
         SharedPreferences settings;
         Editor editor;

@@ -2,17 +2,17 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <layer-list>
-            <item android:left="0dp" android:top="3dp">
+            <item android:left="0dp" android:top="2dp">
                 <shape>
-                    <solid android:color="#d7d7d7" />
+                    <solid android:color="#b1b1b1" />
                     <corners android:radius="5dip"/>
                 </shape>
             </item>
-            <item android:bottom="3dp" android:right="0dp">
+            <item android:bottom="2dp" android:right="0dp">
                 <shape>
-                <solid android:color="@color/colorButton" />
-                <corners android:radius="5dp" />
-        </shape>
+                    <solid android:color="@color/active" />
+                    <corners android:radius="5dp" />
+                </shape>
             </item>
         </layer-list>
     </item>
