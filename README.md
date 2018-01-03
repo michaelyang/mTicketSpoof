@@ -6,11 +6,11 @@ The app began as a bet with a friend and should **not** be used. This was more f
 
 No, don't get started. Don't use this. ~~Although it would probably work.~~
 
-### Prerequisites
+## Prerequisites
 
 The will to not use it
 
-### Demo
+## Demo
 <img src="/demo/mTicketSpoof.gif"/>
 
 ## Learned
