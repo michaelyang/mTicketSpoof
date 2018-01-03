@@ -23,11 +23,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Handler;
+import android.os.Handler;
 
 public class TicketActivity extends AppCompatActivity {
     private SharedPreference sharedPreference;
     TextView datetime;
+    ColorBarView colorBarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +51,7 @@ public class TicketActivity extends AppCompatActivity {
         toolbarTitle.setText(ticket.getFareType());
 
 
-        ColorBarView colorBarView = (ColorBarView) findViewById(R.id.colorBar);
-        Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
-        colorBarView.startAnimation(animBlink);
-
+        colorBarView = (ColorBarView) findViewById(R.id.colorBar);
         datetime = (TextView) findViewById(R.id.datetime);
         Thread t = new Thread() {
             @Override
@@ -73,9 +71,6 @@ public class TicketActivity extends AppCompatActivity {
             }
         };
         t.start();
-        Animation animSidetoSide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.sidetoside);
-        datetime.startAnimation(animSidetoSide);
-
 
         TextView activated = (TextView) findViewById(R.id.activated);
         TextView fareType = (TextView) findViewById(R.id.fareType);
@@ -181,5 +176,14 @@ public class TicketActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("h:mm:ss a\nMM/dd/yy");
         String formattedDate = df.format(c.getTime());
         datetime.setText(formattedDate);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
+        final Animation animSidetoSide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.sidetoside);
+        colorBarView.startAnimation(animBlink);
+        datetime.startAnimation(animSidetoSide);
     }
 }

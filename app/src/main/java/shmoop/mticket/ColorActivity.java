@@ -14,11 +14,13 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 public class ColorActivity extends AppCompatActivity implements View.OnClickListener {
     private ColorBarView colorBarView;
     private Button colorButton1, colorButton2, colorButton3;
+    private SharedPreference sharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
+        sharedPreference = new SharedPreference();
         colorBarView = (ColorBarView) findViewById(R.id.colorBar);
         Button colorButton1 = (Button) findViewById(R.id.colorButton1);
         Button colorButton2 = (Button) findViewById(R.id.colorButton2);
@@ -41,7 +43,8 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
                         .setPositiveButton("ok", new ColorPickerClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-                                colorBarView.setColor1(selectedColor);
+                                sharedPreference.storeColor1(ColorActivity.this, selectedColor);
+                                colorBarView.refresh();
                             }
                         })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -62,7 +65,8 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
                         .setPositiveButton("ok", new ColorPickerClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-                                colorBarView.setColor2(selectedColor);
+                                sharedPreference.storeColor2(ColorActivity.this, selectedColor);
+                                colorBarView.refresh();
                             }
                         })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -83,7 +87,8 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
                         .setPositiveButton("ok", new ColorPickerClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-                                colorBarView.setColor3(selectedColor);
+                                sharedPreference.storeColor3(ColorActivity.this, selectedColor);
+                                colorBarView.refresh();
                             }
                         })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {

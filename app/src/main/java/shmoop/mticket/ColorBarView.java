@@ -17,6 +17,7 @@ public class ColorBarView extends View {
     private int color3;// TODO: use a default from R.color...
     private int height;
     private Paint paint;
+    private SharedPreference sharedPreference;
 
     public ColorBarView(Context context) {
         super(context);
@@ -35,14 +36,15 @@ public class ColorBarView extends View {
 
     private void init(AttributeSet attrs, int defStyle) {
         paint = new Paint();
+        sharedPreference = new SharedPreference();
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorBarView, 0, 0);
         try {
             height = a.getDimensionPixelSize(R.styleable.ColorBarView_height, 0);
-            color1 = a.getColor(R.styleable.ColorBarView_color1, 0);
-            color2 = a.getColor(R.styleable.ColorBarView_color2, 0);
-            color3 = a.getColor(R.styleable.ColorBarView_color3, 0);
+            color1 = sharedPreference.loadColor1(getContext());
+            color2 = sharedPreference.loadColor2(getContext());
+            color3 = sharedPreference.loadColor3(getContext());
         } finally {
             a.recycle();
         }
@@ -81,11 +83,13 @@ public class ColorBarView extends View {
     public int getColor3(){
         return color3;
     }
+
     public void setColor1(int color){
         color1 = color;
         invalidate();
         requestLayout();
     }
+
     public void setColor2(int color){
         color2 = color;
         invalidate();
@@ -93,6 +97,15 @@ public class ColorBarView extends View {
     }
     public void setColor3(int color){
         color3 = color;
+        invalidate();
+        requestLayout();
+    }
+
+    public void refresh(){
+        sharedPreference = new SharedPreference();
+        color1 = sharedPreference.loadColor1(getContext());
+        color2 = sharedPreference.loadColor2(getContext());
+        color3 = sharedPreference.loadColor3(getContext());
         invalidate();
         requestLayout();
     }
