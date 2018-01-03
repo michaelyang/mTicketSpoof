@@ -10,8 +10,8 @@ No, don't get started. Don't use this. ~~Although it would probably work.~~
 
 The will to not use it
 
-###Demo
-<iframe class="imgur-embed" width="100%" height="724" frameborder="0" src="https://i.imgur.com/vxYtlPV.gifv#embed"></iframe>
+### Demo
+<a href="https://i.imgur.com/vxYtlPV.gifv#embed"/>
 
 ## Learned
 
