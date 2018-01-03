@@ -11,7 +11,8 @@ No, don't get started. Don't use this. ~~Although it would probably work.~~
 The will to not use it
 
 ## Demo
-<img src="/demo/mTicketSpoof.gif"/>
+[![Demo](http://img.youtube.com/vi/vlwdBNCzGH4/0.jpg)](http://www.youtube.com/watch?v=vlwdBNCzGH4 "mTicketSpoof Demo
+")
 
 ## Learned
 
