@@ -10,6 +10,9 @@ No, don't get started. Don't use this. ~~Although it would probably work.~~
 
 The will to not use it
 
+### Demo
+<img src="/demo/mTicketSpoof.gif"/>
+
 ## Learned
 
 * Getting used to using SharedPreferences, Listviews, adapters, etc.
@@ -28,6 +31,6 @@ The will to not use it
 
 * **Me** (Unless someone goes against my warnings and gets in trouble by using this. Then **Not Me**)
 
-## Acknowledgments
+## Don't use it
 
 * Don't use it
