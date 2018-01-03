@@ -28,6 +28,6 @@ The will to not use it
 
 * **Me** (Unless someone goes against my warnings and gets in trouble by using this. Then **Not Me**)
 
-## Acknowledgments
+## Don't use it
 
 * Don't use it
