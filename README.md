@@ -11,7 +11,7 @@ No, don't get started. Don't use this. ~~Although it would probably work.~~
 The will to not use it
 
 ### Demo
-<img src="https://i.imgur.com/vxYtlPV.gifv"/>
+<img src="https://i.imgur.com/vxYtlPV.gif"/>
 
 ## Learned
 
